@@ -60,6 +60,33 @@ class Axis implements ComparableInterface
     protected $minorGridlines;
 
     /**
+     * Min Value
+     *
+     * @var integer
+     */
+    private $min = null;
+    /**
+     * Max Value
+     *
+     * @var integer
+     */
+    private $max = null;
+
+    /**
+     * Minor Tick Mark
+     *
+     * @var string
+     */
+    private $minorTickMark = 'out';
+
+    /**
+     * Major Tick Mark
+     *
+     * @var string
+     */
+    private $majorTickMark = 'cross';
+
+    /**
      * Create a new \PhpOffice\PhpPresentation\Shape\Chart\Axis instance
      *
      * @param string $title Title
@@ -67,7 +94,7 @@ class Axis implements ComparableInterface
     public function __construct($title = 'Axis Title')
     {
         $this->title = $title;
-        $this->font  = new Font();
+        $this->font = new Font();
     }
 
     /**
@@ -83,13 +110,101 @@ class Axis implements ComparableInterface
     /**
      * Set Title
      *
-     * @param  string                         $value
+     * @param  string $value
      * @return \PhpOffice\PhpPresentation\Shape\Chart\Axis
      */
     public function setTitle($value = 'Axis Title')
     {
         $this->title = $value;
 
+        return $this;
+    }
+
+    /**
+     * Get Min Value
+     *
+     * @return integer
+     */
+    public function getMin()
+    {
+        return $this->min;
+    }
+
+    /**
+     * Set Min Value
+     *
+     * @param integer $value
+     * @return \PhpOffice\PhpPresentation\Shape\Chart\Axis
+     */
+    public function setMin($value = null)
+    {
+        $this->min = $value;
+        return $this;
+    }
+
+    /**
+     * Get Max Value
+     *
+     * @return integer
+     */
+    public function getMax()
+    {
+        return $this->max;
+    }
+
+    /**
+     * Set Max Value
+     *
+     * @param integer $value
+     * @return \PhpOffice\PhpPresentation\Shape\Chart\Axis
+     */
+    public function setMax($value = null)
+    {
+        $this->max = $value;
+        return $this;
+    }
+
+    /**
+     * Get Major Tick Mark
+     *
+     * @return string
+     */
+    public function getMajorTickMark()
+    {
+        return $this->majorTickMark;
+    }
+
+    /**
+     * Set Major Tick Mark
+     *
+     * @param string $value
+     * @return \PhpOffice\PhpPresentation\Shape\Chart\Axis
+     */
+    public function setMajorTickMark($value = null)
+    {
+        $this->majorTickMark = $value;
+        return $this;
+    }
+
+    /**
+     * Get Minor Tick Mark
+     *
+     * @return string
+     */
+    public function getMinorTickMark()
+    {
+        return $this->minorTickMark;
+    }
+
+    /**
+     * Set Minor Tick Mark
+     *
+     * @param string $value
+     * @return \PhpOffice\PhpPresentation\Shape\Chart\Axis
+     */
+    public function setMinorTickMark($value = null)
+    {
+        $this->minorTickMark = $value;
         return $this;
     }
 
@@ -106,7 +221,7 @@ class Axis implements ComparableInterface
     /**
      * Set font
      *
-     * @param  \PhpOffice\PhpPresentation\Style\Font               $pFont Font
+     * @param  \PhpOffice\PhpPresentation\Style\Font $pFont Font
      * @throws \Exception
      * @return \PhpOffice\PhpPresentation\Shape\RichText\Paragraph
      */
@@ -129,7 +244,7 @@ class Axis implements ComparableInterface
     /**
      * Set Format Code
      *
-     * @param  string                         $value
+     * @param  string $value
      * @return \PhpOffice\PhpPresentation\Shape\Chart\Axis
      */
     public function setFormatCode($value = '')
