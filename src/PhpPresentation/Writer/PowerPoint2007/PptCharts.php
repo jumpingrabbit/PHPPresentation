@@ -2034,6 +2034,20 @@ class PptCharts extends AbstractDecoratorWriter
         $objWriter->writeAttribute('val', 'minMax');
         $objWriter->endElement();
 
+        // c:min
+        if ($oAxis->getMin() !== null) {
+            $objWriter->startElement('c:min');
+            $objWriter->writeAttribute('val', $oAxis->getMin());
+            $objWriter->endElement();
+        }
+
+        // c:max
+        if ($oAxis->getMax() !== null) {
+            $objWriter->startElement('c:max');
+            $objWriter->writeAttribute('val', $oAxis->getMax());
+            $objWriter->endElement();
+        }
+
         // $mainElement > ##c:scaling
         $objWriter->endElement();
 
@@ -2068,7 +2082,12 @@ class PptCharts extends AbstractDecoratorWriter
 
         // c:majorTickMark
         $objWriter->startElement('c:majorTickMark');
-        $objWriter->writeAttribute('val', 'none');
+        $objWriter->writeAttribute('val', $oAxis->getMajorTickMark());
+        $objWriter->endElement();
+
+        // c:minorTickMark
+        $objWriter->startElement('c:minorTickMark');
+        $objWriter->writeAttribute('val', $oAxis->getMinorTickMark());
         $objWriter->endElement();
 
         // c:tickLblPos
